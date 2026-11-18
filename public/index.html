@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#e2231a" />
+<title>다이소 장바구니</title>
+<meta name="description" content="다이소 쇼핑 전 살 물건을 정리하는 개인용 장바구니 앱" />
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icons/icon.svg" />
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="다이소 장바구니" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+
+  <header class="appbar">
+    <h1>다이소 장바구니</h1>
+    <button id="shareRoomBtn" class="icon-btn" title="친구랑 같이 쓰기" aria-label="친구랑 같이 쓰기">👥</button>
+  </header>
+
+  <div id="sharedBadge" class="shared-badge hidden">
+    👥 친구와 함께 보는 중 · <button id="leaveRoomBtn" class="link-btn-inline">공유 끄기</button>
+  </div>
+
+  <section class="search-wrap">
+    <form id="searchForm" class="search-form" autocomplete="off">
+      <input id="searchInput" type="search" placeholder="예) 수세미, 포스트잇, 코드선" maxlength="40" />
+      <button type="submit" class="btn btn-primary">검색</button>
+    </form>
+
+    <div id="searchResults" class="search-results hidden"></div>
+
+    <div id="manualFallback" class="manual-fallback hidden">
+      <p class="manual-msg" id="manualMsg">검색이 잘 안 될 때는 이름이랑 가격을 직접 입력해서 담을 수 있어요.</p>
+      <form id="manualForm" class="manual-form">
+        <input id="manualName" type="text" placeholder="상품 이름" maxlength="60" required />
+        <input id="manualPrice" type="number" inputmode="numeric" placeholder="가격(원)" min="0" required />
+        <button type="submit" class="btn btn-secondary">직접 담기</button>
+      </form>
+    </div>
+    <button id="manualToggle" class="link-btn hidden">직접 입력해서 담기</button>
+  </section>
+
+  <main class="cart-wrap">
+    <div id="emptyState" class="empty-state">
+      <p>🛒 아직 담은 물건이 없어요</p>
+      <p class="empty-sub">위에서 물건을 검색해서 담아보세요</p>
+    </div>
+    <ul id="cartList" class="cart-list"></ul>
+  </main>
+
+  <footer class="totalbar hidden" id="totalbar">
+    <div class="total-row">
+      <span>예상 합계</span>
+      <strong id="totalPrice">0원</strong>
+    </div>
+    <div class="action-row">
+      <button id="shareBtn" class="btn btn-outline">📋 목록 복사(카톡 공유)</button>
+      <button id="clearBtn" class="btn btn-ghost">전체 비우기</button>
+    </div>
+  </footer>
+
+  <div id="snackbar" class="snackbar hidden">
+    <span id="snackbarMsg"></span>
+    <button id="undoBtn" class="link-btn light">되돌리기</button>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

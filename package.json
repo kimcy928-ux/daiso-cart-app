@@ -1,0 +1,12 @@
+{
+  "name": "daiso-cart-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "다이소 쇼핑 전 살 물건을 정리하는 개인용 PWA 장바구니",
+  "engines": {
+    "node": "20.x"
+  },
+  "dependencies": {
+    "@vercel/kv": "^2.0.0"
+  }
+}
